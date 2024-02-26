@@ -6,7 +6,7 @@
 
 int main()
 {
-	// allocating ot the heap
+	// allocating on the heap
 	std::unique_ptr<ly::Application> app = std::make_unique<ly::Application>();
 	app->Run();
 }
