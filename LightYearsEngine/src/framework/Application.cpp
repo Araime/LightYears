@@ -1,4 +1,4 @@
-#include <iostream>
+#include "framework/Core.h"
 #include "framework/Application.h"
 
 namespace ly
@@ -34,7 +34,8 @@ namespace ly
 				TickInternal(targetDeltaTime);
 				RenderInternal();
 			}
-			std::cout << "ticking at framerate: " << 1.f / frameDeltaTime << std::endl;
+
+			LOG("ticking at framerate: %f", 1.f / frameDeltaTime);
 		}
 	}
 
