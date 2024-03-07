@@ -62,11 +62,11 @@ namespace ly
 
 	void World::BeginPlay()
 	{
-		LOG("Began play");
+		
 	}
 
 	void World::Tick(float deltaTime)
 	{
-		LOG("Tick at framerate: %f", 1.f / deltaTime);
+
 	}
 }
