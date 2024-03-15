@@ -10,7 +10,7 @@ namespace ly
 
 		virtual bool CanShoot() const { return true; }
 		virtual bool IsOnCooldown() const { return false; }
-		Actor* GeOwner() const { return mOwner; }
+		Actor* GetOwner() const { return mOwner; }
 
 	protected:
 		Shooter(Actor* owner);

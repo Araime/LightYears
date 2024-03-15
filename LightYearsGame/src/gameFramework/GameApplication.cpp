@@ -13,13 +13,14 @@ ly::Application* GetApplication()
 namespace ly
 {
 	GameApplication::GameApplication()
-		: Application(600, 800, "Light Years", sf::Style::Titlebar | sf::Style::Close)
+		: Application(1000, 750, "Light Years", sf::Style::Titlebar | sf::Style::Close)
 	{
 		AssetManager::Get().SetAssetRootDirectory(GetResourceDir());
 		weak<World> newWorld = LoadWorld<World>();
 		newWorld.lock()->SpawnActor<Actor>();
 		testPlayerSpaceship = newWorld.lock()->SpawnActor<PlayerSpaceship>();
-		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.f, 400.f));
+		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(500.f, 600.f));
+		testPlayerSpaceship.lock()->SetActorLRotation(-90.f);
 		counter = 0;
 	}
 
