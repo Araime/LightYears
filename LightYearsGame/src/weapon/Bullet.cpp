@@ -31,6 +31,12 @@ namespace ly
 		}
 	}
 
+	void Bullet::BeginPlay()
+	{
+		Actor::BeginPlay();
+		SetEnablePhysic(true);
+	}
+
 	void Bullet::Move(float deltaTime)
 	{
 		AddActorLocationOffset(GetActorForwardDirection() * mSpeed * deltaTime);
