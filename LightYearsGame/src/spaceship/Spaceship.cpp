@@ -30,7 +30,11 @@ namespace ly
 	{
 		Actor::BeginPlay();
 		SetEnablePhysic(true);
+		mHealthComp.onHealthChanged.BindAction(GetWeakRef(), &Spaceship::OnHealthChanged);
+	}
 
-		weak<Object> selfRef = GetWeakRef();
+	void Spaceship::OnHealthChanged(float amt, float health, float maxHealth)
+	{
+
 	}
 }
