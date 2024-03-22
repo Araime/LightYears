@@ -31,10 +31,12 @@ namespace ly
 		Actor::BeginPlay();
 		SetEnablePhysic(true);
 		mHealthComp.onHealthChanged.BindAction(GetWeakRef(), &Spaceship::OnHealthChanged);
+
+		mHealthComp.onHealthChanged.Broadcast(11.f, 88.f, 100.f);
 	}
 
 	void Spaceship::OnHealthChanged(float amt, float health, float maxHealth)
 	{
-
+		LOG("Health changed to: %f, and now is %f/%f", amt, health, maxHealth);
 	}
 }
