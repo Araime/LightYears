@@ -80,7 +80,7 @@ namespace ly
 		UpdatePhysicsBodyTransform();
 	}
 
-	void Actor::SetActorLRotation(float newRot)
+	void Actor::SetActorRotation(float newRot)
 	{
 		mSprite.setRotation(newRot);
 		UpdatePhysicsBodyTransform();
@@ -93,7 +93,7 @@ namespace ly
 
 	void Actor::AddActorLRotationOffset(float offsetAmt)
 	{
-		SetActorLRotation(GetActorRotation() + offsetAmt);
+		SetActorRotation(GetActorRotation() + offsetAmt);
 	}
 
 	sf::Vector2f Actor::GetActorLocation() const
@@ -126,7 +126,7 @@ namespace ly
 		return mOwningWorld->GetWindowSize();
 	}
 
-	bool Actor::IsActorOutOfWindowBounds() const
+	bool Actor::IsActorOutOfWindowBounds(float allowance) const
 	{
 		float windowWidth = GetWorld()->GetWindowSize().x;
 		float windowHeight = GetWorld()->GetWindowSize().y;
@@ -136,22 +136,22 @@ namespace ly
 
 		sf::Vector2f actorPos = GetActorLocation();
 
-		if (actorPos.x < -width)
+		if (actorPos.x < -width - allowance)
 		{
 			return true;
 		}
 
-		if (actorPos.x > windowWidth + width)
+		if (actorPos.x > windowWidth + width + allowance)
 		{
 			return true;
 		}
 
-		if (actorPos.y < -height)
+		if (actorPos.y < -height - allowance)
 		{
 			return true;
 		}
 
-		if (actorPos.y > windowHeight + height)
+		if (actorPos.y > windowHeight + height + allowance)
 		{
 			return true;
 		}
@@ -190,6 +190,8 @@ namespace ly
 
 	bool Actor::IsOtherHostile(Actor* other) const
 	{
+		if (other == nullptr) return false;
+
 		if (GetTeamID() == GetNeutralTeamID() || other->GetTeamID() == GetNeutralTeamID())
 		{
 			return false;

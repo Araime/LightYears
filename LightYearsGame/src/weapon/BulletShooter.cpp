@@ -11,8 +11,9 @@ namespace ly
 		mCooldownClock(),
 		mCooldownTime(cooldownTime)
 	{
-
+		
 	}
+
 	bool BulletShooter::IsOnCooldown() const
 	{
 		if (mCooldownClock.getElapsedTime().asSeconds() > mCooldownTime)
@@ -28,6 +29,6 @@ namespace ly
 		mCooldownClock.restart();
 		weak<Bullet> newBullet = GetOwner()->GetWorld()->SpawnActor<Bullet>(GetOwner(), "SpaceShooterRedux/PNG/Lasers/laserBlue01.png");
 		newBullet.lock()->SetActorLocation(GetOwner()->GetActorLocation());
-		newBullet.lock()->SetActorLRotation(GetOwner()->GetActorRotation());
+		newBullet.lock()->SetActorRotation(GetOwner()->GetActorRotation());
 	}
 }

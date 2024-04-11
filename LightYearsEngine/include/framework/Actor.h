@@ -21,7 +21,7 @@ namespace ly
 		void Render(sf::RenderWindow & window);
 
 		void SetActorLocation(const sf::Vector2f& newLoc);
-		void SetActorLRotation(float newRot);
+		void SetActorRotation(float newRot);
 		void AddActorLocationOffset(const sf::Vector2f offsetAmt);
 		void AddActorLRotationOffset(float offsetAmt);
 
@@ -36,7 +36,7 @@ namespace ly
 		World* GetWorld() { return mOwningWorld; }
 		const World* GetWorld() const { return mOwningWorld; }
 
-		bool IsActorOutOfWindowBounds() const;
+		bool IsActorOutOfWindowBounds(float allowance = 10.f) const;
 
 		void SetEnablePhysic(bool enable);
 		virtual void OnActorBeginOverlap(Actor* other);
