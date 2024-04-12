@@ -31,6 +31,9 @@ add_library(${LIGHT_YEARS_ENGINE_TARGET_NAME} STATIC
 
 	${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+
+	${CMAKE_CURRENT_SOURCE_DIR}/include/framework/TimerManager.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/TimerManager.cpp
 )
 
 target_include_directories(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC
