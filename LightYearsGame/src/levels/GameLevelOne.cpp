@@ -11,26 +11,27 @@ namespace ly
 		: World(owningApp)
 	{
 		testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
-		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(500.f, 600.f));
+		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(400.f, 600.f));
 		testPlayerSpaceship.lock()->SetActorRotation(-90.f);
 
 		weak<Vanguard> testSpaceship1 = SpawnActor<Vanguard>();
-		testSpaceship1.lock()->SetActorLocation(sf::Vector2f(400.f, 25.f));
+		testSpaceship1.lock()->SetActorLocation(sf::Vector2f(300.f, 25.f));
 
 		weak<Vanguard> testSpaceship2 = SpawnActor<Vanguard>();
-		testSpaceship2.lock()->SetActorLocation(sf::Vector2f(500.f, 50.f));
+		testSpaceship2.lock()->SetActorLocation(sf::Vector2f(400.f, 50.f));
 
 		weak<Vanguard> testSpaceship3 = SpawnActor<Vanguard>();
-		testSpaceship3.lock()->SetActorLocation(sf::Vector2f(600.f, 25.f));
+		testSpaceship3.lock()->SetActorLocation(sf::Vector2f(500.f, 25.f));
 	}
 
 	void GameLevelOne::BeginPlay()
 	{
-		TimerManager::Get().SetTimer(GetWeakRef(), &GameLevelOne::TimerCallback_Test, 2, true);
+		timerIndex_Test = TimerManager::Get().SetTimer(GetWeakRef(), &GameLevelOne::TimerCallback_Test, 2, true);
 	}
 
 	void GameLevelOne::TimerCallback_Test()
 	{
 		LOG("Callback called!");
+		TimerManager::Get().ClearTimer(timerIndex_Test);
 	}
 }
