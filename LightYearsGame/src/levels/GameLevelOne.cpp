@@ -4,6 +4,7 @@
 #include "enemy/Vanguard.h"
 #include "levels/GameLevelOne.h"
 #include "player/PlayerSpaceship.h"
+#include "gameplay/GameStage.h"
 
 namespace ly
 {
@@ -33,5 +34,10 @@ namespace ly
 	{
 		LOG("Callback called!");
 		TimerManager::Get().ClearTimer(timerHandle_Test);
+	}
+
+	void GameLevelOne::InitGameStages()
+	{
+		AddStage(shared<GameStage>{new GameStage{this}});
 	}
 }
