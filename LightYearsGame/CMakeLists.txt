@@ -47,6 +47,9 @@ add_executable(${LIGHT_YEARS_GAME_TARGET_NAME}
 	${CMAKE_CURRENT_SOURCE_DIR}/include/enemy/UFO.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/enemy/UFO.cpp
 
+	${CMAKE_CURRENT_SOURCE_DIR}/include/enemy/UFOStage.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/enemy/UFOStage.cpp
+
 	${CMAKE_CURRENT_SOURCE_DIR}/include/levels/GameLevelOne.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/levels/GameLevelOne.cpp
 )

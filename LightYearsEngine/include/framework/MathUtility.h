@@ -24,8 +24,8 @@ namespace ly
 	template<typename T>
 	sf::Vector2<T>& Normalize(sf::Vector2<T>& vector)
 	{
-		float vectorLength = GetVectorLength(vector);
-		if (vectorLength == 0) return sf::Vector2<T>();
+		float vectorLength = GetVectorLength<T>(vector);
+		if (vectorLength == 0.f) return sf::Vector2<T>{};
 
 		ScaleVector(vector, 1.0 / vectorLength);
 		return vector;
