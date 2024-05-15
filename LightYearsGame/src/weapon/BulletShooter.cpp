@@ -6,12 +6,13 @@
 
 namespace ly
 {
-	BulletShooter::BulletShooter(Actor* owner, float cooldownTime, const sf::Vector2f& localPositionOffset, float localRotationOffset)
+	BulletShooter::BulletShooter(Actor* owner, float cooldownTime, const sf::Vector2f& localPositionOffset, float localRotationOffset, const std::string& bulletTexturePath)
 		: Shooter(owner),
 		mCooldownClock(),
 		mCooldownTime(cooldownTime),
 		mLocalPositionOffset(localPositionOffset),
-		mLocalRotationOffset(localRotationOffset)
+		mLocalRotationOffset(localRotationOffset),
+		mBulletTexturePath(bulletTexturePath)
 	{
 
 	}
@@ -26,13 +27,18 @@ namespace ly
 		return true;
 	}
 
+	void BulletShooter::SetBulletTexturePath(const std::string& bulletTexturePath)
+	{
+		mBulletTexturePath = bulletTexturePath;
+	}
+
 	void BulletShooter::ShootImpl()
 	{
 		sf::Vector2f ownerForwardDir = GetOwner()->GetActorForwardDirection();
 		sf::Vector2f ownerRightDir = GetOwner()->GetActorRightDirection();
 
 		mCooldownClock.restart();
-		weak<Bullet> newBullet = GetOwner()->GetWorld()->SpawnActor<Bullet>(GetOwner(), "SpaceShooterRedux/PNG/Lasers/laserBlue01.png");
+		weak<Bullet> newBullet = GetOwner()->GetWorld()->SpawnActor<Bullet>(GetOwner(), mBulletTexturePath);
 		newBullet.lock()->SetActorLocation(GetOwner()->GetActorLocation() + ownerForwardDir * mLocalPositionOffset.x + ownerRightDir * mLocalPositionOffset.y);
 		newBullet.lock()->SetActorRotation(GetOwner()->GetActorRotation() + mLocalRotationOffset);
 	}
