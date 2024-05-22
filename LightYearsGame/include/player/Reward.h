@@ -6,6 +6,7 @@
 namespace ly
 {
 	class PlayerSpaceship;
+	class Reward;
 	using RewardFunc = std::function<void(PlayerSpaceship*)>;
 	using RewardFactoryFunc = std::function<weak<Reward>(World*)>;
 	class Reward : public Actor

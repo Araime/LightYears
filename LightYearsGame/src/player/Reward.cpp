@@ -28,11 +28,11 @@ namespace ly
 
 	void Reward::OnActorBeginOverlap(Actor* otherActor)
 	{
-		// TODO: clean up casting
-		PlayerSpaceship* playerSpaceship = static_cast<PlayerSpaceship*>(otherActor);
+		PlayerSpaceship* playerSpaceship = dynamic_cast<PlayerSpaceship*>(otherActor);
 		if (playerSpaceship && !playerSpaceship->IsPendingDestroy())
 		{
 			mRewardFunc(playerSpaceship);
+			Destroy();
 		}
 	}
 
