@@ -29,7 +29,7 @@ namespace ly
 	{
 		AddStage(shared<UFOStage>{new UFOStage{ this }});
 
-		AddStage(shared<WaitStage>{new WaitStage{this}});
+		AddStage(shared<WaitStage>{new WaitStage{this, 3.f}});
 		AddStage(shared<VanguardStage>{new VanguardStage{this}});
 
 		AddStage(shared<WaitStage>{new WaitStage{this, 3.f}});
