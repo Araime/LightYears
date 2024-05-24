@@ -9,20 +9,20 @@
 #include "gameplay/WaitStage.h"
 #include "levels/GameLevelOne.h"
 #include "player/PlayerSpaceship.h"
+#include "player/PlayerManager.h"
 
 namespace ly
 {
 	GameLevelOne::GameLevelOne(Application* owningApp)
 		: World(owningApp)
 	{
-		testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
-		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(400.f, 600.f));
-		testPlayerSpaceship.lock()->SetActorRotation(-90.f);
+		
 	}
 
 	void GameLevelOne::BeginPlay()
 	{
-
+		Player newPlayer = PlayerManager::Get().CreateNewPlayer();
+		newPlayer.SpawnSpaceship(this);
 	}
 
 	void GameLevelOne::InitGameStages()
