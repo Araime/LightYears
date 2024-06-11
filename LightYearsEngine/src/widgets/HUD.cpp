@@ -22,7 +22,7 @@ namespace ly
 
 	}
 
-	void HUD::Init(sf::RenderWindow& windowRef)
+	void HUD::Init(const sf::RenderWindow& windowRef)
 	{
 
 	}
