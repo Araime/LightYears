@@ -27,6 +27,7 @@ namespace ly
 		}
 		else
 		{
+			mCurrentPlayerSpaceship = weak<PlayerSpaceship>();
 			onLifeExhausted.Broadcast();
 		}
 

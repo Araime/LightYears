@@ -7,7 +7,6 @@ https://github.com/Araime/LightYears/assets/82653875/5f55dd7f-9d02-45c1-a201-c92
 ## TO DO: 
 1. ~Выпадение оружия~
 1. ~Выпадение бонусов~
-1. Набор уровней
 1. Битва с боссом
 
 ## Установка
@@ -28,25 +27,32 @@ VisualStudio и CMake (3.27.7) должны быть уже установлен
 
 Терминал:
 ```sh
-`mkdir build`
+mkdir build
 ```
 ```sh
 cd build
 ```
 
-В папке `build` ввести `cmake -S .. -B .`.  
-CMake произведет компиляцию проекта и скачает необходимые библиотеки.
+В папке `build` ввести:
+```sh
+`cmake -S .. -B .`.
+```
+CMake произведет сборку проекта и скачает необходимые библиотеки.
+После билда, проект готов к запуску.
 
 ### Запуск
 
-После билда, проект готов к запуску. Можно запустить с exe файла внутри проекта.
-Можно запустить в VisualStudio, открыв файл `.sln`  в папке `build`, тогда 
-необходимо в качестве `run as startup project`, в solution explorer выбрать `LightYearsGame`.
+Запустить в VisualStudio, открыв файл `LightYears.sln`
+в папке `build`, необходимо в качестве `run as startup project`, в solution explorer выбрать
+`LightYearsGame`. После первого запуска в VisualStudio, по пути `build`->`LightYearsGame`,
+появится папка `debug` или `release`, в зависимости от выбранного режима, в которой будет
+exe-файл приложения.
 
 ## Credits
 - Ассеты:  
-	- `Все спрайты` SpaceShooterRedux - [Kenney](https://kenney.nl/assets/space-shooter-redux) .
+	- `Все спрайты` SpaceShooterRedux - [Kenney](https://kenney.nl/assets/space-shooter-redux).
 
 ## Цель проекта
 
-Создание игры на C++ с использованием библиотеки SFML и физического движка Box2D by [Erin Catto](https://github.com/erincatto/box2d).
+Создание игры на C++ с использованием библиотеки SFML и физического движка Box2D by 
+[Erin Catto](https://github.com/erincatto/box2d).
