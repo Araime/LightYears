@@ -59,7 +59,7 @@ namespace ly
 
 	void RewardHealth(PlayerSpaceship* player)
 	{
-		static float rewardAmt = 10.f;
+		static float rewardAmt = 20.f;
 		if (player && !player->IsPendingDestroy())
 		{
 			player->GetHealthComp().ChangeHealth(rewardAmt);

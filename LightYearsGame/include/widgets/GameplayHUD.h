@@ -21,5 +21,8 @@ namespace ly
 		void PlayerSpaceshipDestroyed(Actor* actor);
 		TextWidget mFrameRateText;
 		ValueGuage mPlayerHealthBar;
+		sf::Color mHealthyHealthBarColor;
+		sf::Color mCriticalHealthBarColor;
+		float mCriticalThreshold;
 	};
 }
