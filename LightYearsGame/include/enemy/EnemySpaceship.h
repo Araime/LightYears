@@ -8,14 +8,16 @@ namespace ly
 	class EnemySpaceship : public Spaceship
 	{
 	public:
-		EnemySpaceship(World* owningWorld, 
-			const std::string& texturePath, 
-			float collisionDamage = 200.f, 
-			const List<RewardFactoryFunc> rewards = 
+		EnemySpaceship(World* owningWorld,
+			const std::string& texturePath,
+			float collisionDamage = 200.f,
+			float rewardSpawnWeight = 0.65f,
+			const List<RewardFactoryFunc> rewards =
 			{
-				CreateHealthReward, 
-				CreateThreewayShooterReward, 
-				CreateFrontalWiperReward
+				CreateHealthReward,
+				CreateThreewayShooterReward,
+				CreateFrontalWiperReward,
+				CreateLifeReward
 			}
 		);
 		virtual void Tick(float deltaTime) override;
@@ -25,6 +27,11 @@ namespace ly
 		void SpawnReward();
 		float mCollisionDamage;
 		unsigned int scoreAwardAmt;
+		float mRewardSpawnWeight;
+		int HealthID;
+		int ThreewayShooterID;
+		int FrontalWiperID;
+		int LifeID;
 		virtual void OnActorBeginOverlap(Actor* other) override;
 		virtual void Blew() override;
 		List<RewardFactoryFunc> mRewardFactories;

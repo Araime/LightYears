@@ -4,14 +4,20 @@
 
 namespace ly
 {
-	EnemySpaceship::EnemySpaceship(World* owningWorld, 
-		const std::string& texturePath, 
-		float collisionDamage, 
+	EnemySpaceship::EnemySpaceship(World* owningWorld,
+		const std::string& texturePath,
+		float collisionDamage,
+		float rewardSpawnWeight,
 		const List<RewardFactoryFunc> rewards)
 		: Spaceship(owningWorld, texturePath),
 		mCollisionDamage(collisionDamage),
-		mRewardFactories(rewards),
-		scoreAwardAmt(10)
+		scoreAwardAmt(10),
+		mRewardSpawnWeight(rewardSpawnWeight),
+		HealthID(0),
+		ThreewayShooterID(1),
+		FrontalWiperID(2),
+		LifeID(3),
+		mRewardFactories(rewards)
 	{
 		SetTeamID(2);
 	}
@@ -34,10 +40,32 @@ namespace ly
 	{
 		if (mRewardFactories.size() == 0) return;
 
-		int pick = static_cast<int>(RandomRange(0, mRewardFactories.size()));
-		if (pick >= 0 && pick < mRewardFactories.size())
+		if (mRewardSpawnWeight < RandomRange(0.f, 1.f)) return;
+
+		float randomReward = RandomRange(0.f, 1.f);
+		if (randomReward <= 0.1f)
 		{
-			weak<Reward> newReward = mRewardFactories[pick](GetWorld());
+			weak<Reward> newReward = mRewardFactories[LifeID](GetWorld());
+			newReward.lock()->SetActorLocation(GetActorLocation());
+		}
+		else if (0.1f < randomReward && randomReward <= 0.6f)
+		{
+			float randomWeapon = RandomRange(0.f, 1.f);
+
+			if (0.5f < RandomRange(0.f, 1.f))
+			{
+				weak<Reward> newReward = mRewardFactories[ThreewayShooterID](GetWorld());
+				newReward.lock()->SetActorLocation(GetActorLocation());
+			}
+			else
+			{
+				weak<Reward> newReward = mRewardFactories[FrontalWiperID](GetWorld());
+				newReward.lock()->SetActorLocation(GetActorLocation());
+			}
+		}
+		else
+		{
+			weak<Reward> newReward = mRewardFactories[HealthID](GetWorld());
 			newReward.lock()->SetActorLocation(GetActorLocation());
 		}
 	}

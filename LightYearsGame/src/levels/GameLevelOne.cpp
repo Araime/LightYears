@@ -43,8 +43,6 @@ namespace ly
 
 	void GameLevelOne::InitGameStages()
 	{
-		AddStage(shared<UFOStage>{new UFOStage{ this }});
-
 		AddStage(shared<WaitStage>{new WaitStage{this, 2.f}});
 		AddStage(shared<VanguardStage>{new VanguardStage{this}});
 

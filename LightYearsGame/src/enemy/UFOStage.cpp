@@ -28,7 +28,7 @@ namespace ly
 	sf::Vector2f UFOStage::GetRandomSpawnLoc() const
 	{
 		auto windowSize = GetWorld()->GetWindowSize();
-		float spawnLeft = RandomRange(-1, 1);
+		float spawnLeft = RandomRange(-1.f, 1.f);
 		float spawnLocX = 0;
 		if (spawnLeft < 0)
 		{
@@ -39,7 +39,7 @@ namespace ly
 			spawnLocX = -100.f;
 		}
 
-		float spawnLocY = RandomRange(0, windowSize.y);
+		float spawnLocY = RandomRange(0.f, windowSize.y);
 
 		return sf::Vector2f(spawnLocX, spawnLocY);
 	}

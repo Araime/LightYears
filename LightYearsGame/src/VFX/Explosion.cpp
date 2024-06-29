@@ -25,7 +25,7 @@ namespace ly
 
 		for (int i = 0; i < mParticleAmt; ++i)
 		{
-			std::string particleImagePath = mParticleImagePaths[(int)RandomRange(0, mParticleImagePaths.size())];
+			std::string particleImagePath = mParticleImagePaths[static_cast<int>(RandomRange(0.f, mParticleImagePaths.size()))];
 			weak<Particle> newParticle = world->SpawnActor<Particle>(particleImagePath);
 
 			newParticle.lock()->RandomLifetime(mLifeTimeMin, mLifeTimeMax);
