@@ -16,6 +16,7 @@ namespace ly
 
 		virtual void Draw(sf::RenderWindow& windowRef) override;
 		virtual void Tick(float deltaTime) override;
+		virtual bool HandleEvent(const sf::Event& event) override;
 
 	private:
 		virtual void Init(const sf::RenderWindow& windowRef) override;
@@ -34,7 +35,8 @@ namespace ly
 		TextWidget mPlayerScoreText;
 
 		// just for test
-		Button mTestButton;
+		void TestButtonClicked();
+		Button TestButton;
 
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;

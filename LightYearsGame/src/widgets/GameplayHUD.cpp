@@ -17,7 +17,7 @@ namespace ly
 		mCriticalHealthBarColor(255, 0, 0, 255),
 		mCriticalThreshold(0.3),
 		mWidgetSpacing(10.f),
-		mTestButton()
+		TestButton()
 	{
 		mFrameRateText.SetTextSize(22);
 		mPlayerLifeText.SetTextSize(20);
@@ -32,7 +32,7 @@ namespace ly
 		mPlayerLifeText.NativeDraw(windowRef);
 		mPlayerScoreIcon.NativeDraw(windowRef);
 		mPlayerScoreText.NativeDraw(windowRef);
-		mTestButton.NativeDraw(windowRef);
+		TestButton.NativeDraw(windowRef);
 	}
 
 	void GameplayHUD::Tick(float deltaTime)
@@ -40,6 +40,11 @@ namespace ly
 		int frameRate = static_cast<int>(1 / deltaTime);
 		std::string frameRateStr = "Frame Rate: " + std::to_string(frameRate);
 		mFrameRateText.SetString(frameRateStr);
+	}
+
+	bool GameplayHUD::HandleEvent(const sf::Event& event)
+	{
+		return TestButton.HandleEvent(event) || HUD::HandleEvent(event);
 	}
 
 	void GameplayHUD::Init(const sf::RenderWindow& windowRef)
@@ -61,7 +66,9 @@ namespace ly
 		nextWidgetPosition += sf::Vector2f(mPlayerScoreIcon.GetBound().width + mWidgetSpacing, 2.f);
 		mPlayerScoreText.SetWidgetLocation(nextWidgetPosition);
 
-		mTestButton.SetWidgetLocation({ windowSize.x / 2.f, windowSize.y / 2.f});
+		TestButton.SetWidgetLocation({ windowSize.x / 2.f, windowSize.y / 2.f});
+		TestButton.SetTextCharacterSize(20);
+		TestButton.onButtonClicked.BindAction(GetWeakRef(), &GameplayHUD::TestButtonClicked);
 
 		RefreshHealthBar();
 		ConnectPlayerStatus();
@@ -121,5 +128,10 @@ namespace ly
 	void GameplayHUD::PlayerSpaceshipDestroyed(Actor* actor)
 	{
 		RefreshHealthBar();
+	}
+
+	void GameplayHUD::TestButtonClicked()
+	{
+		LOG("Button Clicked!");
 	}
 }
