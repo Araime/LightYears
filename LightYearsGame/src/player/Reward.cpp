@@ -60,7 +60,7 @@ namespace ly
 
 	weak<Reward> CreateLifeReward(World* world)
 	{
-		return CreateReward(world, "SpaceShooterRedux/PNG/Power-ups/life.png", RewardLife);
+		return CreateReward(world, "SpaceShooterRedux/PNG/UI/playerLife1_blue.png", RewardLife);
 	}
 
 	weak<Reward> CreateReward(World* world, const std::string& texturePath, RewardFunc rewardFunc)

@@ -9,14 +9,15 @@ namespace ly
 	GameplayHUD::GameplayHUD()
 		: mFrameRateText("Frame Rate:"),
 		mPlayerHealthBar(),
-		mPlayerLifeIcon("SpaceShooterRedux/PNG/Power-ups/life.png"),
+		mPlayerLifeIcon("SpaceShooterRedux/PNG/UI/playerLife1_blue.png"),
 		mPlayerLifeText(""),
 		mPlayerScoreIcon("SpaceShooterRedux/PNG/Power-ups/star_gold.png"),
 		mPlayerScoreText(""),
 		mHealthyHealthBarColor(128, 255, 128, 255),
 		mCriticalHealthBarColor(255, 0, 0, 255),
 		mCriticalThreshold(0.3),
-		mWidgetSpacing(10.f)
+		mWidgetSpacing(10.f),
+		mTestButton()
 	{
 		mFrameRateText.SetTextSize(22);
 		mPlayerLifeText.SetTextSize(20);
@@ -31,6 +32,7 @@ namespace ly
 		mPlayerLifeText.NativeDraw(windowRef);
 		mPlayerScoreIcon.NativeDraw(windowRef);
 		mPlayerScoreText.NativeDraw(windowRef);
+		mTestButton.NativeDraw(windowRef);
 	}
 
 	void GameplayHUD::Tick(float deltaTime)
@@ -58,6 +60,8 @@ namespace ly
 
 		nextWidgetPosition += sf::Vector2f(mPlayerScoreIcon.GetBound().width + mWidgetSpacing, 2.f);
 		mPlayerScoreText.SetWidgetLocation(nextWidgetPosition);
+
+		mTestButton.SetWidgetLocation({ windowSize.x / 2.f, windowSize.y / 2.f});
 
 		RefreshHealthBar();
 		ConnectPlayerStatus();
