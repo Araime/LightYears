@@ -22,6 +22,8 @@ namespace ly
 		mShooter2.IncrementLevel(amt);
 		mShooter3.IncrementLevel(amt);
 		mShooter4.IncrementLevel(amt);
+		mShooter5.IncrementLevel(amt);
+		mShooter6.IncrementLevel(amt);
 	}
 
 	void FrontalWiper::ShootImpl()
