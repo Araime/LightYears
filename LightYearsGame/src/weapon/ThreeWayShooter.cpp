@@ -25,18 +25,14 @@ namespace ly
 
 	void ThreeWayShooter::ShootImpl()
 	{
-		mTopLevelShooterLeft.Shoot();
-		mTopLevelShooterRight.Shoot();
-
-		if (GetCurrentLevel() >= GetMaxLevel() - 1)
-		{
-			mShooterMid.Shoot();
-		}
+		mShooterMid.Shoot();
+		mShooterLeft.Shoot();
+		mShooterRight.Shoot();
 
 		if (GetCurrentLevel() == GetMaxLevel())
 		{
-			mShooterLeft.Shoot();
-			mShooterRight.Shoot();
+			mTopLevelShooterLeft.Shoot();
+			mTopLevelShooterRight.Shoot();
 		}
 	}
 }

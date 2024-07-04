@@ -27,11 +27,11 @@ namespace ly
 	void FrontalWiper::ShootImpl()
 	{
 		mShooter1.Shoot();
+		mShooter2.Shoot();
 		mShooter4.Shoot();
 
 		if (GetCurrentLevel() >= GetMaxLevel() - 1)
 		{
-			mShooter2.Shoot();
 			mShooter3.Shoot();
 		}
 
