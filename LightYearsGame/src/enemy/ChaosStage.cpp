@@ -22,7 +22,9 @@ namespace ly
 	void ChaosStage::StartStage()
 	{
 		mSpawnTimer = TimerManager::Get().SetTimer(GetWeakRef(), &ChaosStage::SpawnVanguard, mSpawnInterval);
-		mDifficultTimerHandle = TimerManager::Get().SetTimer(GetWeakRef(), &ChaosStage::IncreaseDifficulty, mSpawnIntervalDecrementInterval, true);
+		mDifficultTimerHandle = TimerManager::Get().SetTimer(GetWeakRef(),
+															 &ChaosStage::IncreaseDifficulty,
+															 mSpawnIntervalDecrementInterval, true);
 		TimerManager::Get().SetTimer(GetWeakRef(), &ChaosStage::StageDurationReached, mStageDuration);
 	}
 
