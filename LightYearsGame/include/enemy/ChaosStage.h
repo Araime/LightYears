@@ -30,9 +30,9 @@ namespace ly
 		float mMinSpawnInterval;
 		float mSpawnIntervalDecrement;
 		float mSpawnIntervalDecrementInterval;
-		float stageDuration;
+		float mStageDuration;
 
 		TimerHandle mDifficultTimerHandle;
-		TimerHandle mTimerHandle;
+		TimerHandle mSpawnTimer;
 	};
 }
