@@ -43,10 +43,9 @@ namespace ly
 		virtual void OnActorBeginOverlap(Actor* other);
 		virtual void OnActorEndOverlap(Actor* other);
 		virtual void Destroy() override;
+
 		static uint8 GetNeutralTeamID() { return neturalTeamID; }
-
 		void SetTeamID(uint8 teamID) { mTeamID = teamID; }
-
 		uint8 GetTeamID() const { return mTeamID; }
 		bool IsOtherHostile(Actor* other) const;
 
@@ -56,6 +55,7 @@ namespace ly
 		const sf::Sprite& GetSprite() const { return mSprite; }
 
 		Delegate<Actor*> onActorDestroyed;
+		void SetTextureRepeated(bool repeated);
 
 	private:
 		void InitializePhysics();
