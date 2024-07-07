@@ -11,7 +11,7 @@ namespace ly
 		EnemySpaceship(World* owningWorld,
 			const std::string& texturePath,
 			float collisionDamage = 200.f,
-			float rewardSpawnWeight = 0.7f,
+			float rewardSpawnWeight = 0.65f,
 			const List<RewardFactoryFunc> rewards =
 			{
 				CreateHealthReward,

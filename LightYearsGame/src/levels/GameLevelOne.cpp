@@ -55,9 +55,6 @@ namespace ly
 	{
 		AddStage(shared<VanguardStage>{new VanguardStage{ this }});
 
-		AddStage(shared<WaitStage>{new WaitStage{ this, 2.f }});
-		AddStage(shared<BossStage>{new BossStage{ this }});
-
 		AddStage(shared<WaitStage>{new WaitStage{ this, 1.f }});
 		AddStage(shared<TwinBladeStage>{new TwinBladeStage{ this }});
 
@@ -69,6 +66,9 @@ namespace ly
 
 		AddStage(shared<WaitStage>{new WaitStage{ this, 2.f }});
 		AddStage(shared<ChaosStage>{new ChaosStage{ this }});
+
+		AddStage(shared<WaitStage>{new WaitStage{ this, 2.f }});
+		AddStage(shared<BossStage>{new BossStage{ this }});
 	}
 
 	void GameLevelOne::QuitGame()

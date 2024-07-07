@@ -53,12 +53,12 @@ namespace ly
 		if (mRewardSpawnWeight < RandomRange(0.f, 1.f)) return;
 
 		float randomReward = RandomRange(0.f, 1.f);
-		if (randomReward <= 0.08f)
+		if (randomReward <= 0.05f)
 		{
 			weak<Reward> newReward = mRewardFactories[LifeID](GetWorld());
 			newReward.lock()->SetActorLocation(GetActorLocation());
 		}
-		else if (0.08f < randomReward && randomReward <= 0.6f)
+		else if (0.05f < randomReward && randomReward <= 0.6f)
 		{
 			float randomWeapon = RandomRange(0.f, 1.f);
 
