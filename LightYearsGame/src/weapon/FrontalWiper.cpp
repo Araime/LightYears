@@ -5,12 +5,12 @@ namespace ly
 	FrontalWiper::FrontalWiper(Actor* owner, float cooldownTime, const sf::Vector2f& localOffset, float width)
 		: Shooter(owner),
 		mWidth(width),
-		mShooter1(owner, cooldownTime, { localOffset.x, localOffset.y - width / 2.f }, 0.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png"),
-		mShooter2(owner, cooldownTime, { localOffset.x, localOffset.y - width / 6.f }, 0.f, "SpaceShooterRedux/PNG/Lasers/laserBlue07.png"),
-		mShooter3(owner, cooldownTime, { localOffset.x, localOffset.y + width / 6.f }, 0.f, "SpaceShooterRedux/PNG/Lasers/laserBlue07.png"),
-		mShooter4(owner, cooldownTime, { localOffset.x, localOffset.y + width / 2.f }, 0.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png"),
-		mShooter5(owner, 0.1f, { localOffset.x, localOffset.y + width / 1.5f }, 10.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png"),
-		mShooter6(owner, 0.1f, { localOffset.x, localOffset.y - width / 1.5f }, -10.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png")
+		mShooter1(owner, cooldownTime, {localOffset.x, localOffset.y - width / 2.f}, 0.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png"),
+		mShooter2(owner, cooldownTime, {localOffset.x, localOffset.y - width / 6.f}, 0.f, "SpaceShooterRedux/PNG/Lasers/laserBlue07.png"),
+		mShooter3(owner, cooldownTime, {localOffset.x, localOffset.y + width / 6.f}, 0.f, "SpaceShooterRedux/PNG/Lasers/laserBlue07.png"),
+		mShooter4(owner, cooldownTime, {localOffset.x, localOffset.y + width / 2.f}, 0.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png"),
+		mShooter5(owner, cooldownTime, {localOffset.x, localOffset.y + width / 1.5f}, 10.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png"),
+		mShooter6(owner, cooldownTime, {localOffset.x, localOffset.y - width / 1.5f}, -10.f, "SpaceShooterRedux/PNG/Lasers/laserGreen11.png")
 	{
 
 	}
@@ -22,6 +22,19 @@ namespace ly
 		mShooter2.IncrementLevel(amt);
 		mShooter3.IncrementLevel(amt);
 		mShooter4.IncrementLevel(amt);
+		mShooter5.IncrementLevel(amt);
+		mShooter6.IncrementLevel(amt);
+	}
+
+	void FrontalWiper::SetCurrentLevel(int level)
+	{
+		Shooter::SetCurrentLevel(level);
+		mShooter1.SetCurrentLevel(level);
+		mShooter2.SetCurrentLevel(level);
+		mShooter3.SetCurrentLevel(level);
+		mShooter4.SetCurrentLevel(level);
+		mShooter5.SetCurrentLevel(level);
+		mShooter6.SetCurrentLevel(level);
 	}
 
 	void FrontalWiper::ShootImpl()
