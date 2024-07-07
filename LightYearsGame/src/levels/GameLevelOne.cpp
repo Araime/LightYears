@@ -3,6 +3,7 @@
 #include "enemy/TwinBladeStage.h"
 #include "enemy/HexagonStage.h"
 #include "enemy/UFOStage.h"
+#include "enemy/BossStage.h"
 #include "framework/Actor.h"
 #include "framework/TimerManager.h"
 #include "framework/World.h"
@@ -18,7 +19,7 @@ namespace ly
 	GameLevelOne::GameLevelOne(Application* owningApp)
 		: World(owningApp)
 	{
-		
+
 	}
 
 	void GameLevelOne::BeginPlay()
@@ -44,19 +45,22 @@ namespace ly
 
 	void GameLevelOne::InitGameStages()
 	{
+		AddStage(shared<BossStage>{new BossStage{ this }});
+
+		AddStage(shared<WaitStage>{new WaitStage{ this, 2.f }});
+		AddStage(shared<VanguardStage>{new VanguardStage{ this }});
+
+		AddStage(shared<WaitStage>{new WaitStage{ this, 1.f }});
+		AddStage(shared<TwinBladeStage>{new TwinBladeStage{ this }});
+
+		AddStage(shared<WaitStage>{new WaitStage{ this, 1.f }});
+		AddStage(shared<HexagonStage>{new HexagonStage{ this }});
+
+		AddStage(shared<WaitStage>{new WaitStage{ this, 2.f }});
+		AddStage(shared<UFOStage>{new UFOStage{ this }});
+
+		AddStage(shared<WaitStage>{new WaitStage{ this, 2.f }});
 		AddStage(shared<ChaosStage>{new ChaosStage{ this }});
-
-		AddStage(shared<WaitStage>{new WaitStage{this, 2.f}});
-		AddStage(shared<VanguardStage>{new VanguardStage{this}});
-
-		AddStage(shared<WaitStage>{new WaitStage{this, 1.f}});
-		AddStage(shared<TwinBladeStage>{new TwinBladeStage{this}});
-
-		AddStage(shared<WaitStage>{new WaitStage{this, 1.f}});
-		AddStage(shared<HexagonStage>{new HexagonStage{this}});
-
-		AddStage(shared<WaitStage>{new WaitStage{this, 2.f}});
-		AddStage(shared<UFOStage>{new UFOStage{this}});
 	}
 
 	void GameLevelOne::GameOver()
