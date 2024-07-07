@@ -30,9 +30,9 @@ namespace ly
 	{
 		sf::Vector2u windowSize = windofRef.getSize();
 		mTitleText.SetWidgetLocation({ windowSize.x / 2.f - mTitleText.GetBound().width / 2.f, 100.f});
+
 		mStartButton.SetWidgetLocation({windowSize.x / 2.f - mStartButton.GetBound().width / 2.f, windowSize.y / 2.f});
 		mQuitButton.SetWidgetLocation(mStartButton.GetWidgetLocation() + sf::Vector2f(0.f, 70.f));
-
 		mStartButton.onButtonClicked.BindAction(GetWeakRef(), &MainMenuHUD::StartButtonClicked);
 		mQuitButton.onButtonClicked.BindAction(GetWeakRef(), &MainMenuHUD::QuitButtonClicked);
 	}
