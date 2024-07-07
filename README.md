@@ -2,7 +2,7 @@
 
 Игра про космос, в которой корабль летит и уничтожает другие корабли. 
 
-https://github.com/Araime/LightYears/assets/82653875/5f55dd7f-9d02-45c1-a201-c92a5d08def6
+https://github.com/Araime/LightYears/assets/82653875/56be9bf9-a78b-4429-b80b-5b4d594c4c6c
 
 ## TO DO: 
 1. ~Выпадение оружия~
