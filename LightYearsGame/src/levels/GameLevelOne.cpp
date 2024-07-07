@@ -78,6 +78,7 @@ namespace ly
 
 	void GameLevelOne::Restart()
 	{
+		PlayerManager::Get().Reset();
 		GetApplication()->LoadWorld<GameLevelOne>();
 	}
 

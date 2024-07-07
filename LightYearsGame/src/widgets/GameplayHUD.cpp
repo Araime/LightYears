@@ -20,7 +20,8 @@ namespace ly
 		mWinLoseText(""),
 		mFinalScoreText(""),
 		mRestartButton("Restart"),
-		mQuitButton("Quit")
+		mQuitButton("Quit"),
+		mWindowSize()
 	{
 		mFrameRateText.SetTextSize(22);
 		mPlayerLifeText.SetTextSize(20);
@@ -34,6 +35,8 @@ namespace ly
 
 	void GameplayHUD::Draw(sf::RenderWindow& windowRef)
 	{
+		mWindowSize = windowRef.getSize();
+
 		mFrameRateText.NativeDraw(windowRef);
 		mPlayerHealthBar.NativeDraw(windowRef);
 		mPlayerLifeIcon.NativeDraw(windowRef);
@@ -69,6 +72,9 @@ namespace ly
 		mRestartButton.SetVisibility(true);
 		mQuitButton.SetVisibility(true);
 
+		int score = PlayerManager::Get().GetPlayer()->GetScore();
+		mFinalScoreText.SetString("Score: " + std::to_string(score));
+
 		if (playerWon)
 		{
 			mWinLoseText.SetString("You Win!");
@@ -77,11 +83,15 @@ namespace ly
 		{
 			mWinLoseText.SetString("You Lose!");
 		}
+
+		mWinLoseText.SetWidgetLocation({mWindowSize.x / 2.f - mWinLoseText.GetBound().width / 2.f, 100.f});
+		mFinalScoreText.SetWidgetLocation({mWindowSize.x / 2.f - mFinalScoreText.GetBound().width / 2.f, 200.f});
 	}
 
 	void GameplayHUD::Init(const sf::RenderWindow& windowRef)
 	{
 		auto windowSize = windowRef.getSize();
+		mWindowSize = windowSize;
 		mPlayerHealthBar.SetWidgetLocation(sf::Vector2f(20.f, windowSize.y - 50.f));
 
 		sf::Vector2f nextWidgetPosition = mPlayerHealthBar.GetWidgetLocation();
@@ -101,7 +111,10 @@ namespace ly
 		RefreshHealthBar();
 		ConnectPlayerStatus();
 
+		mWinLoseText.SetTextSize(40);
 		mWinLoseText.SetWidgetLocation({windowSize.x / 2.f - mWinLoseText.GetBound().width / 2.f, 100.f});
+		mFinalScoreText.SetTextSize(40);
+		mFinalScoreText.SetWidgetLocation({windowSize.x / 2.f - mFinalScoreText.GetBound().width / 2.f, 200.f});
 
 		mRestartButton.SetWidgetLocation({windowSize.x / 2.f - mRestartButton.GetBound().width / 2.f, windowSize.y / 2.f});
 		mQuitButton.SetWidgetLocation(mRestartButton.GetWidgetLocation() + sf::Vector2f(0.f, 70.f));
