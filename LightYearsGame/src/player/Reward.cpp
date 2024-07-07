@@ -45,22 +45,22 @@ namespace ly
 
 	weak<Reward> CreateHealthReward(World* world)
 	{
-		return CreateReward(world, "SpaceShooterRedux/PNG/Power-ups/pill_green.png", RewardHealth);
+		return CreateReward(world, "SpaceShooterRedux/PNG/Pickups/pill_green.png", RewardHealth);
 	}
 
 	weak<Reward> CreateThreewayShooterReward(World* world)
 	{
-		return CreateReward(world, "SpaceShooterRedux/PNG/Power-ups/powerupRed_star.png", RewardThreewayShooter);
+		return CreateReward(world, "SpaceShooterRedux/PNG/Pickups/three_shooter_pickup.png", RewardThreewayShooter);
 	}
 
 	weak<Reward> CreateFrontalWiperReward(World* world)
 	{
-		return CreateReward(world, "SpaceShooterRedux/PNG/Power-ups/powerupGreen_bolt.png", RewardFrontalWiper);
+		return CreateReward(world, "SpaceShooterRedux/PNG/Pickups/front_row_shooter_pickup.png", RewardFrontalWiper);
 	}
 
 	weak<Reward> CreateLifeReward(World* world)
 	{
-		return CreateReward(world, "SpaceShooterRedux/PNG/UI/playerLife1_blue.png", RewardLife);
+		return CreateReward(world, "SpaceShooterRedux/PNG/Pickups/playerLife1_blue.png", RewardLife);
 	}
 
 	weak<Reward> CreateReward(World* world, const std::string& texturePath, RewardFunc rewardFunc)
