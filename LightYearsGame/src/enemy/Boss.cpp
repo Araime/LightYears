@@ -6,14 +6,15 @@ namespace ly
 	Boss::Boss(World* world)
 		: EnemySpaceship(world, "SpaceShooterRedux/PNG/Enemies/boss.png"),
 		mSpeed(100.f),
+		mBaseSpeed(100.f),
 		mSwitchDistanceToEdge(100.f),
-		mBaseShooterLeft(this, 1.0f, {55.f, -45.f}),
-		mBaseShooterRight(this, 1.0f, {55.f, 45.f}),
-		mThreeWayShooter(this, 4.f, {110.f, 0.f}),
-		mFrontalWiperLeft(this, 6.f, {30.f, -130.f}),
-		mFrontalWiperRight(this, 6.f, {30.f, 130.f}),
-		mFinalStageShooterLeft(this, 0.3f, {10.f, -150.f}),
-		mFinalStageShooterRight(this, 0.3f, {10.f, 150.f}),
+		mBaseShooterLeft(this, 1.5f, {55.f, -45.f}),
+		mBaseShooterRight(this, 1.5f, {55.f, 45.f}),
+		mThreeWayShooter(this, 6.f, {110.f, 0.f}),
+		mFrontalWiperLeft(this, 8.f, {30.f, -130.f}),
+		mFrontalWiperRight(this, 8.f, {30.f, 130.f}),
+		mFinalStageShooterLeft(this, 0.4f, {5.f, -150.f}),
+		mFinalStageShooterRight(this, 0.4f, {5.f, 150.f}),
 		mStage(1)
 	{
 		SetActorRotation(90.f);
@@ -102,5 +103,6 @@ namespace ly
 		mThreeWayShooter.SetCurrentLevel(mStage);
 		mFrontalWiperLeft.SetCurrentLevel(mStage);
 		mFrontalWiperRight.SetCurrentLevel(mStage);
+		mSpeed = mStage * mBaseSpeed * 0.6f;
 	}
 }

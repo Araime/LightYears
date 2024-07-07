@@ -16,6 +16,7 @@ namespace ly
 
 	private:
 		float mSpeed;
+		float mBaseSpeed;
 		float mSwitchDistanceToEdge;
 		void CheckMove();
 
