@@ -1,6 +1,9 @@
 #pragma once
 
 #include "enemy/EnemySpaceship.h"
+#include "weapon/BulletShooter.h"
+#include "weapon/ThreeWayShooter.h"
+#include "weapon/FrontalWiper.h"
 
 namespace ly
 {
@@ -13,5 +16,10 @@ namespace ly
 	private:
 		float mSpeed;
 		float mSwitchDistanceToEdge;
+		void CheckMove();
+
+		BulletShooter mBaseShooterLeft;
+		BulletShooter mBaseShooterRight;
+		void ShootBaseShooters();
 	};
 }
