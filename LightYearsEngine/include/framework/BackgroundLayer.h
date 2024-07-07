@@ -15,8 +15,13 @@ namespace ly
 			float sizeMax = 2.f,
 			int spriteCount = 20,
 			const sf::Color& colorTint = sf::Color(180, 180, 200, 225));
+		void SetAssets(const List<std::string>& assetPaths);
 
 	private:
+		void RefreshSprites();
+		void RandomSpriteTexture(sf::Sprite& sprite);
+		shared<sf::Texture> GetRandomTexture() const;
+
 		sf::Vector2f mMinVelocity;
 		sf::Vector2f mMaxVelocity;
 		float mSizeMin;
