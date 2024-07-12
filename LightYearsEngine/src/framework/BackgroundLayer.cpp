@@ -22,7 +22,7 @@ namespace ly
 		mTintColor(colorTint)
 	{
 		SetAssets(assetPaths);
-		//SetEnablePhysic(false);
+		SetEnablePhysic(false);
 	}
 
 	void BackgroundLayer::SetAssets(const List<std::string>& assetPaths)

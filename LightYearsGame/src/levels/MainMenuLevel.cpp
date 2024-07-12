@@ -1,4 +1,5 @@
 #include "framework/Application.h"
+#include "framework/BackdropActor.h"
 #include "levels/MainMenuLevel.h"
 #include "levels/GameLevelOne.h"
 #include "widgets/MainMenuHUD.h"
@@ -15,6 +16,7 @@ namespace ly
 	{
 		mMainMenuHUD.lock()->onStartButtonClicked.BindAction(GetWeakRef(), &MainMenuLevel::StartGame);
 		mMainMenuHUD.lock()->onQuitButtonClicked.BindAction(GetWeakRef(), &MainMenuLevel::QuitGame);
+		SpawnActor<BackdropActor>("SpaceShooterRedux/Backgrounds/mainMenu.png", sf::Vector2f(30.f, 0.f));
 	}
 
 	void MainMenuLevel::StartGame()

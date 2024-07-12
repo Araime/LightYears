@@ -161,7 +161,7 @@ namespace ly
 
 	void Actor::SetEnablePhysic(bool enable)
 	{
-		mPhysicsEnabled = true;
+		mPhysicsEnabled = enable;
 		if (mPhysicsEnabled)
 		{
 			InitializePhysics();
