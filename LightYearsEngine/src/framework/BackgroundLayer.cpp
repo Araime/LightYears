@@ -22,7 +22,7 @@ namespace ly
 		mTintColor(colorTint)
 	{
 		SetAssets(assetPaths);
-		SetEnablePhysic(false);
+		//SetEnablePhysic(false);
 	}
 
 	void BackgroundLayer::SetAssets(const List<std::string>& assetPaths)
@@ -51,7 +51,7 @@ namespace ly
 		RefreshSprites();
 	}
 
-	void BackgroundLayer::SetVelocities(const sf::Vector2f& min, sf::Vector2f& max)
+	void BackgroundLayer::SetVelocities(const sf::Vector2f& min, const sf::Vector2f& max)
 	{
 		mMinVelocity = min;
 		mMaxVelocity = max;
@@ -97,7 +97,12 @@ namespace ly
 			sprite.setPosition(sprite.getPosition() + vel * deltaTime);
 			if (IsSpriteOffScreen(sprite))
 			{
+				RandomSpriteTexture(sprite);
 				RandomSpriteTransform(sprite);
+
+				float velX = RandomRange(mMinVelocity.x, mMaxVelocity.x);
+				float velY = RandomRange(mMinVelocity.y, mMaxVelocity.y);
+				mVelocities[i] = sf::Vector2f{ velX, velY };
 			}
 		}
 	}
@@ -164,7 +169,7 @@ namespace ly
 		sprite.setScale(size, size);
 	}
 
-	bool BackgroundLayer::IsSpriteOffScreen(sf::Sprite& sprite)
+	bool BackgroundLayer::IsSpriteOffScreen(sf::Sprite& sprite) const
 	{
 		auto bound = sprite.getGlobalBounds();
 		auto windowSize = GetWorld()->GetWindowSize();
@@ -175,7 +180,7 @@ namespace ly
 			return true;
 		}
 
-		if (spritePos.y < -bound.height || spritePos.y > windowSize.y + bound.height)	
+		if (spritePos.y < -bound.height || spritePos.y > windowSize.y + bound.height)
 		{
 			return true;
 		}
